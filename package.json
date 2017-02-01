@@ -1,0 +1,23 @@
+{
+  "name": "smartbuilding",
+  "version": "1.0.0",
+  "description": "main home page of smart building",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HyungJiny/SmartBuilding.git"
+  },
+  "author": "HyungJin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyungJiny/SmartBuilding/issues"
+  },
+  "homepage": "https://github.com/HyungJiny/SmartBuilding#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "jade": "^1.11.0"
+  }
+}
