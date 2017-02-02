@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/HyungJiny/SmartBuilding#readme",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "express": "^4.14.1",
     "jade": "^1.11.0"
   }
