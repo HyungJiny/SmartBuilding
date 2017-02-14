@@ -6,13 +6,8 @@ html
     h1
       a(href='/Notice') Notices
     ul
-      each notice in notices
-        li
-          - rid = encodeURIComponent(notice['@rid'])
-          a(href='/Notice/'+rid)= notice.title
 
     artcle
-      h2= notice
-      =description
+      
     div
       a(href='/Notice/new') new
