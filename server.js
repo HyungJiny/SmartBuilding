@@ -1,33 +1,45 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express()
+// Load the depenendcies
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const app = express();
+const router = require('./router/main')(app);
 
-// using DB by orientDB
-var OrientDB = require('orientjs');
-var dbServer = OrientDB({
-	host: 'localhost',
-	port: 2480,
-	username: 'root',
-	password: 'jiny1004'
-});
-var db = dbServer.use('SmartBuilding');
+// Load the config
+const config = require('./config');
+const port = process.env.PORT || 3000;
 
 // set template path
 app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.set('views', './views');
 
-// set notice page
-app.get(['/Notice', '/Notice/:id'], function(req, res){
-		res.render('notice');
-});
-
-
 // main page
 app.use(express.static('public'));
+
+// parse JSON and url-encoded query
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// print the request log on console
+app.use(morgan('dev'));
+
+// set the secret key variable for smartbuilding
+app.set('jwt-secret', config.secret);
+
+//configure api router
+app.use('/api', require('./router/api'));
 
 // open server
-app.listen(3000, function(){
-	console.log('Connected 3000 port!');
+app.listen(port, function(){
+	console.log(`Express is running on port ${port}`);
+});
+
+// connect to mongodb server
+mongoose.connect(config.mongodbUri);
+const db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', ()=>{
+	console.log('Connected to mongodb server');
 });
