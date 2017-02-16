@@ -25,3 +25,10 @@ node server.js
 
 ### 참고
 supervisor 혹은 nodemon을 이용하면 서버 재부팅 과정이 필요 없습니다.
+```
+npm install supervisor -g
+```
+or
+```
+npm install nodemon -g
+```
