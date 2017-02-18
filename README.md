@@ -12,12 +12,10 @@ Making smart building project in Purdue univ.
 ```
 git clone https://github.com/HyungJiny/SmartBuilding
 ```
-
 2. install node module
 ```
 npm install
 ```
-
 3. start server
 ```
 node server.js
